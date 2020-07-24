@@ -1,2 +1,0 @@
-class UserHabit < ApplicationRecord
-end
