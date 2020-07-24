@@ -1,0 +1,2 @@
+class IdentityHabit < ApplicationRecord
+end
