@@ -27,5 +27,5 @@ class IdentitiesController < ApplicationController
     def identity_params
         params.require(:identity).permit(:pact_name, :description)
     end
-    
+
 end
