@@ -8,7 +8,6 @@ class Step < ApplicationRecord
     validates :duration_number, presence: true
     validates :duration_type, presence: true
   
-  
     belongs_to :user
     belongs_to :habit
 
