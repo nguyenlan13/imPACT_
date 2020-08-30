@@ -11,8 +11,21 @@ class IdentitiesController < ApplicationController
     def create
         identities = Identity.new(identity_params)
         if identity.save
-            render: identity
+            render json: identity
         end
     end
 
+    def show
+        user = current_user
+        identity = Identity.find(params[:id])
+        commentable = identity
+        render json: identity
+    end
+
+    private
+
+    def identity_params
+        params.require(:identity).permit(:pact_name, :description)
+    end
+    
 end
