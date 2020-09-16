@@ -1,18 +1,20 @@
+// import React from 'react';
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar'
 import Dashboard from './containers/dashboard'
 import Profile from './containers/profilePage'
 import Login from './containers/loginPage'
 import Signup from './containers/signupPage'
 
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
       <Router>
         <div className="App">
+            <Navbar/>
             <Switch>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/profile" component={Profile}/>
