@@ -1,0 +1,13 @@
+const GET_CSRF_TOKEN = "GET_CSRF_TOKEN"
+const LOADING = "LOADING"
+const LOG_IN_USER = "LOG_IN_USER"
+const SIGN_UP_USER = "SIGN_UP_USER"
+const LOGOUT = "LOGOUT"
+
+export {
+    GET_CSRF_TOKEN,
+    LOADING,
+    LOG_IN_USER,
+    SIGN_UP_USER,
+    LOGOUT
+}
