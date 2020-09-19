@@ -13,7 +13,7 @@ export const getToken = () => {
             const csrf_token = tokenJson.csrf_auth_token
             dispatch({
                 type: GET_CSRF_TOKEN,
-                payload:csrf_token
+                payload: csrf_token
             })
         }catch(error){
             console.log(error)
