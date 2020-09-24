@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     get "/auth" => 'sessions#auth'
     post "/login" => 'sessions#create'
-
+    post "/signup" => "users#create"
 
     resources :users do
         resources :habits
