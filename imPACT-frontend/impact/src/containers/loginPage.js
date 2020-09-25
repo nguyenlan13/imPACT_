@@ -12,19 +12,18 @@ class loginPage extends Component {
 
     submitHandler = async (email, password) => {
         await this.props.login(this.props.csrf_token, email, password)
-        
+        this.props.history.push("/profile")
     }
 
 
     render(){
-        
         return(
-            <div>
+            <div className="page">
+                <h1>LOG IN:</h1>
                 <LoginForm handleSubmit={this.submitHandler}/>
             </div>
         )
     }
-
 }
 
 const mapStateToProps = ({csrf_token}) => ({

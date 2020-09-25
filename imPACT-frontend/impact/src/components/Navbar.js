@@ -1,12 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import Logo from './../assets/Logo.png'
 
 
 function Navbar() {
     return (
-        <nav>
+        <nav className="navbar">
+            <ul className="navlink">
             <Link to="/dashboard">
-                <li>Dashboard</li>
+                <div><img id="logo" src={Logo} alt=""/></div>
             </Link>
             <Link to="/profile">
                 <li>My Profile</li>
@@ -17,6 +19,7 @@ function Navbar() {
             <Link to="/signup">
                 <li>Sign Up</li>
             </Link>
+            </ul>
         </nav>
     )
 }
