@@ -4,10 +4,15 @@ import { connect } from 'react-redux'
 
 class habitPage extends Component {
 
-
-    return(
-        
-    )
+    render() {
+        return(
+            <div>
+                
+            </div>
+            
+        )
+    }
+       
 
     
 }
