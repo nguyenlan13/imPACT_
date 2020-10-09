@@ -16,3 +16,5 @@ class habitPage extends Component {
 
     
 }
+
+export default habitPage
