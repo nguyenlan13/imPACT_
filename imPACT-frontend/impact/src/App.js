@@ -6,8 +6,8 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Dashboard from './containers/dashboard'
 import Profile from './containers/profilePage'
-import Identity from '.containers/identityPage'
-import Habit from '.containers/habitPage'
+import Identity from './containers/identityPage'
+import Habit from './containers/habitPage'
 import Login from './containers/loginPage'
 import Signup from './containers/signupPage'
 
