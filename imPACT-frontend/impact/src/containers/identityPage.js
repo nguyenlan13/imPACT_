@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 
 class identityPage extends Component {
 
-  render(){
-      return(
-          <div>
-              
-          </div>
-      )
-  }
+    render(){
+        return(
+            <div>
+                
+            </div>
+        )
+    }
 }
+
+export default identityPage
