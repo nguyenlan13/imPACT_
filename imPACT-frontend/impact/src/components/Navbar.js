@@ -13,6 +13,12 @@ function Navbar() {
             <Link to="/profile">
                 <li>My Profile</li>
             </Link>
+            <Link to="/habits">
+                <li>Habits</li>
+            </Link>
+            <Link to="/identities">
+                <li>Identities</li>
+            </Link>
             <Link to="/login">
                 <li>Login</li>
             </Link>
