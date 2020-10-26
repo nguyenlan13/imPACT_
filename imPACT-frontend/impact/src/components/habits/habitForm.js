@@ -10,15 +10,15 @@ const HabitForm = (props) => {
 
 return (
     <form onSubmit={handleSubmit}>
-     <input
-        className="mr-sm-2"
-        type="text"
-        placeholder="Name"
-        onChange={event => setName(event.target.value)}
-        value={name}
-      />
-      <br/>
-      <input type="submit" />
+        <input
+            className="mr-sm-2"
+            type="text"
+            placeholder="Name"
+            onChange={event => setName(event.target.value)}
+            value={name}
+        />
+        <br/>
+        <input type="submit" />
     </form>
 )
 
