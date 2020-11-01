@@ -18,7 +18,7 @@ return (
             value={name}
         />
             <br/>
-            {/* <select>Options</select> */}
+            <select>Options</select>
         <input type="submit" />
     </form>
 )
