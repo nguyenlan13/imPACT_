@@ -9,7 +9,16 @@ const HabitForm = (props) => {
  }
 return (
     <form onSubmit={handleSubmit}>
-
+        <input
+            className="mr-sm-2"
+            type="text"
+            placeholder="name"
+            onChange={event => setName(event.target.value)}
+            value={name}
+        />
+            <br/>
+            <select>Options</select>
+        <input type="submit" />
     </form>
 )
 
