@@ -13,16 +13,15 @@ return (
         <input
             className="mr-sm-2"
             type="text"
-            placeholder="name"
+            placeholder="Pact Name"
             onChange={event => setName(event.target.value)}
             value={name}
-            />
+        />
             <br/>
+            {/* <select>Options</select> */}
         <input type="submit" />
     </form>
 )
-
-
 
 }
 
