@@ -23,3 +23,31 @@ export const getAllHabits = () => {
         }
     }
 }
+
+export const addIdentity = (csrf_token, name, identityId) => {
+    return async function (dispatch) {
+        try{
+            let response = await fetch(`http://localhost:3001/habits/${IdentityId}`,{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                body: JSON.stringify({identity: {name}}),
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            let identityJson = await response.json()
+            dispatch({
+                type: ADD_IDENTITY,
+                payload: 
+                    identityJson
+            })
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
