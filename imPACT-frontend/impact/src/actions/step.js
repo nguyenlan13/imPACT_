@@ -1,7 +1,7 @@
 import { ADD_STEP
 } from '../actionTypes'
 
-export const addStep = (csrf_token, name, stepId) => {
+export const addStep = (csrf_token, name, stepId, userId) => {
     return async function (dispatch) {
         try{
             let response = await fetch(`http://localhost:3001/habits/${stepId}`,{
@@ -11,7 +11,7 @@ export const addStep = (csrf_token, name, stepId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({step: {name}}),
+                body: JSON.stringify({step: {name, userId, stepId}}),
                 credentials: 'include'
             })
             if(!response.ok){
