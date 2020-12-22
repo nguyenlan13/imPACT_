@@ -4,8 +4,8 @@ import identityReducer from './identityReducer'
 
 
 const rootReducer = (combineReducers) ({
-    csrf_token: tokenReducer,
-    identity: identityReducer,
+    csrf_token: tokenReducer
+    // identity: identityReducer,
 
 
 })
