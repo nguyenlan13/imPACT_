@@ -1,21 +1,40 @@
 import React, { useState } from "react";
 
 const HabitForm = (props) => {
-    const [name, setName] = useState("")
+    const [build, setBuild] = useState("")
+    const [title, setTitle] = useState("")
     const handleSubmit = event => {
         event.preventDefault()
 
-        props.handleSubmit(name)
+        props.handleSubmit(build, title)
  }
 
 return (
     <form onSubmit={handleSubmit}>
+        <label>Build</label>
+        <input
+
+            type="radio"
+            label="Build"
+            checked={build === "Build"}
+            onChange={event => setBuild(event.target.value)}
+            value="Build"
+        />
+        <label>Quit</label>
+        <input
+      
+            type="radio"
+            label="Quit"
+            checked={build === "Quit"}
+            onChange={event => setBuild(event.target.value)}
+            value="Quit"
+        />
         <input
             className="mr-sm-2"
             type="text"
-            placeholder="Name"
-            onChange={event => setName(event.target.value)}
-            value={name}
+            placeholder="Title"
+            onChange={event => setTitle(event.target.value)}
+            value={title}
         />
         <br/>
         <input type="submit" />

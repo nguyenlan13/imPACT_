@@ -24,7 +24,7 @@ export const getAllHabits = () => {
 }
 
 
-export const addHabit = (csrf_token, name, habitId) => {
+export const addHabit = (csrf_token, build, title, habitId) => {
     return async function (dispatch) {
         try{
             let response = await fetch(`http://localhost:3001/habits/${habitId}`,{
@@ -34,7 +34,7 @@ export const addHabit = (csrf_token, name, habitId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({habit: {name}}),
+                body: JSON.stringify({habit: {build, title}}),
                 credentials: 'include'
             })
             if(!response.ok){
