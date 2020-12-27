@@ -4,19 +4,19 @@ import { GET_ALL_IDENTITIES,
     JOIN_IDENTITY
 } from '../actionTypes'
 
-export const getAllHabits = () => {
+export const getAllIdentities = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch("http://localhost:3001/habits", {
+            const res = await fetch("http://localhost:3001/identities", {
                 credentials: 'include'
             })
             if(!res.ok){
                 throw res
             }
-            const habitJson = await res.json()
+            const identityJson = await res.json()
             dispatch({
                 type: GET_ALL_IDENTITIES,
-                payload: habitJson
+                payload: identityJson
             })
         }catch(error){
             console.log(error)
