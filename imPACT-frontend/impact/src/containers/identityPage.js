@@ -6,7 +6,7 @@ import IdentityForm from '../components/identities/identityForm'
 class identityPage extends Component {
 
     submitHandler = async (name) => {
-        await this.props.addIdentity(this.props.csrf_token, name)
+        await this.props.add_dentity(this.props.csrf_token, name)
         // this.props.history.push("/profile")
     }
 
