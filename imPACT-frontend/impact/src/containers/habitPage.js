@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import HabitForm from '../components/habits/habitForm'
-
+import { getAllHabits } from '../actions/habit'
+import { addHabit } from '../actions/habit'
 
 class habitPage extends Component {
 
@@ -30,7 +31,7 @@ const mapStateToProps = ({csrf_token}) => ({
 })
     
 const mapDispatchToProps = (dispatch) => ({
-    // add_habit: (csrf_token, build, title) => dispatch(addHabit(csrf_token, build, title))
+    add_habit: (csrf_token, build, title) => dispatch(addHabit(csrf_token, build, title))
 })
 
 
