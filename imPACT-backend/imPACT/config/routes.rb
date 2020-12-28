@@ -6,8 +6,18 @@ Rails.application.routes.draw do
     post "/signup" => "users#create"
     get "/dashboard" => "users#dashboard", as: "dashboard"
 
+    post "/join" => "user_identities#create", as: "join"
+    delete "/leave" => "user_identities#destroy", as: "leave_pact"
+    post "/link" => "identity_habits#create", as: "link"
+    delete "/unlink" => "identity_habits#destroy", as: "unlink"
+
+    resources :identities, only: [:index, :new, :create]
+    resources :habits
+    resources :users, except: [:new]
     
+
     resources :users do
+        resources :identities
         resources :habits
     end
 
