@@ -6,7 +6,8 @@ class UserIdentitiesController < ApplicationController
         user_identity = UserIdentity.new(user: current_user, identity: Identity.find(params[:identity_id]))
         authorize(user_identity)
         if user_identity.save
-            redirect_to identity_path(params[:identity_id])
+            render json: user_identity
+            # redirect_to identity_path(params[:identity_id])
         else
             flash[:danger] = "You've already joined this PACT."
             redirect_to(request.env['HTTP_REFERER'])
