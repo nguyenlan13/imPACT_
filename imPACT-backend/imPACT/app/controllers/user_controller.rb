@@ -21,6 +21,10 @@ class UserController < ApplicationController
         render json: user, status: 200
     end
 
+    def dashboard
+        user = current_user
+    end
+
     private
     
     def user_params

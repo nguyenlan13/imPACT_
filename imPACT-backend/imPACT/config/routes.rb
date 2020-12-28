@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     get "/auth" => 'sessions#auth'
     post "/login" => 'sessions#create'
     post "/signup" => "users#create"
+    get "/dashboard" => "users#dashboard", as: "dashboard"
 
+    
     resources :users do
         resources :habits
     end
