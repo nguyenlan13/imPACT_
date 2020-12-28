@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:password])
             log_in(user)
             cookies["logged_in"] = logged_in?
-            # render json: { user: user, message: "sucess!" }, status: 200
+            # render json: { user: user, message: "success!" }, status: 200
             render json: { message: "success!", user: user }
         else
             render json: { message: "Login credentials were incorrect, please try again.", error: true }
