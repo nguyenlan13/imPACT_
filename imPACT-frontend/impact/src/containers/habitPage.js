@@ -7,10 +7,11 @@ import { addHabit } from '../actions/habit'
 class habitPage extends Component {
 
 
-    submitHandler = async (build, title) => {
-        await this.props.add_Habit(this.props.csrf_token, build, title)
+    submitHandler = async (build, title, number, frequency) => {
+        await this.props.add_habit(this.props.csrf_token, build, title, number, frequency)
         // this.props.history.push("/profile")
     }
+    
     render() {
         return(
             <div className="page">
@@ -31,7 +32,8 @@ const mapStateToProps = ({csrf_token}) => ({
 })
     
 const mapDispatchToProps = (dispatch) => ({
-    add_habit: (csrf_token, build, title) => dispatch(addHabit(csrf_token, build, title))
+    get_all_habits: () => dispatch(getAllHabits()),
+    add_habit: (csrf_token, build, title, number, frequency) => dispatch(addHabit(csrf_token, build, title, number, frequency))
 })
 
 
