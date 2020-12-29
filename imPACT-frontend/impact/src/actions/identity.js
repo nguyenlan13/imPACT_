@@ -24,17 +24,18 @@ export const getAllIdentities = () => {
     }
 }
 
-export const addIdentity = (csrf_token, name, identityId) => {
+export const addIdentity = (csrf_token, name) => {
     return async function (dispatch) {
         try{
-            let response = await fetch(`http://localhost:3001/identities/${IdentityId}`,{
+            let response = await fetch("http://localhost:3001/identities",{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({identity: {name}}),
+                // body: JSON.stringify({identity: {name}}),
+                    body: JSON.stringify(name),
                 credentials: 'include'
             })
             if(!response.ok){
