@@ -9,7 +9,7 @@ class IdentitiesController < ApplicationController
     end
 
     def create
-        identities = Identity.new(identity_params)
+        identity = Identity.new(identity_params)
         if identity.save
             render json: identity
         end
