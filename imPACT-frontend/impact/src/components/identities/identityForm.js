@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 const IdentityForm = (props) => {
-    const [name, setName] = useState("")
+    const [pact_name, setName] = useState("")
+    const [description, setDescription] = useState("")
     const handleSubmit = event => {
         event.preventDefault()
 
-        props.handleSubmit(name)
+        props.handleSubmit(pact_name, description)
 }
 
 
@@ -17,11 +18,17 @@ return (
             type="text"
             placeholder="Pact Name"
             onChange={event => setName(event.target.value)}
-            value={name}
+            value={pact_name}
         />
         <br/>
-        
-        <select>Options</select>
+        <input
+            className="mr-sm-2"
+            type="text"
+            placeholder="Description"
+            onChange={event => setDescription(event.target.value)}
+            value={description}
+        />
+        <br/>
         <input type="submit" />
     </form>
 )
