@@ -3,8 +3,10 @@ class IdentitiesController < ApplicationController
     def index
         if params[:user_id]
             identities = User.find(params[:user_id]).identities
+            render json: identities
         else
             identities = Identity.all
+            render json: identities
         end
     end
 

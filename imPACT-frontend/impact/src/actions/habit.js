@@ -44,17 +44,17 @@ export const getAllHabits = () => {
 // }
 
 
-export const addHabit = (csrf_token, build, title, number, frequency, habitId) => {
+export const addHabit = (csrf_token, build, title, frequency_number, frequency) => {
     return async function (dispatch) {
         try{
-            let response = await fetch(`http://localhost:3001/habits/${habitId}`,{
+            let response = await fetch('http://localhost:3001/habits/',{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({habit: {build, title, number, frequency}}),
+                body: JSON.stringify({habit: {build, title, frequency_number, frequency}}),
                 credentials: 'include'
             })
             if(!response.ok){
