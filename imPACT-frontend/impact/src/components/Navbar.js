@@ -11,19 +11,19 @@ function Navbar() {
                 <div><img id="logo" src={Logo} alt=""/></div>
             </Link>
             <Link to="/profile">
-                <li>My Profile</li>
+                <li className="navlink">My Profile</li>
             </Link>
             <Link to="/habits">
-                <li>Habits</li>
+                <li className="navlink">Habits</li>
             </Link>
             <Link to="/identities">
-                <li>Identities</li>
+                <li className="navlink">Identities</li>
             </Link>
             <Link to="/login">
-                <li>Login</li>
+                <li className="navlink">Login</li>
             </Link>
             <Link to="/signup">
-                <li>Sign Up</li>
+                <li className="navlink">Sign Up</li>
             </Link>
             </ul>
         </nav>

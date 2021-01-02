@@ -18,16 +18,27 @@ code {
     /* list-style: none; */
     margin: 0;
     padding:0;
-    float: left;
-    display: block;
+    /* float: left; */
+    /* display: block; */
     /* text-align: center; */
-    padding: 14px 16px;
+    /* padding: 14px 16px; */
+    background-color: rgb(51, 104, 172);
+}
+
+.nav {
+    float: left; 
 }
 
 .navlink {
     list-style: none;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 14px 16px;
     display: flex;
+    text-align: center;
+    text-decoration: none;
+    color: White;
     /* position: fixed; */
     top: 0;
     width: 100%;
@@ -44,4 +55,16 @@ code {
 
 .page {
     padding-top: 100px;
+}
+
+
+.myhabit {
+    width: 200px;
+    border: 15px solid rgb(70, 0, 128);
+    padding: 50px;
+    margin: 20px;
+}
+
+.dropdown {
+    min-width: 160px;
 }
