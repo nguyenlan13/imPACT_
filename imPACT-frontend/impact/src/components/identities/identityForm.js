@@ -7,7 +7,7 @@ const IdentityForm = (props) => {
         event.preventDefault()
 
         props.handleSubmit(pact_name, description)
-}
+    }
 
 
 return (
