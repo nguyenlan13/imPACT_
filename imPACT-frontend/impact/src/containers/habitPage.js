@@ -13,7 +13,7 @@ class habitPage extends Component {
 
     submitHandler = async (build, title, frequency_number, frequency) => {
         await this.props.add_habit(this.props.csrf_token, build, title, frequency_number, frequency)
-        this.props.history.push("/profile")
+        // this.props.history.push("/profile")
     }
 
     render() {
