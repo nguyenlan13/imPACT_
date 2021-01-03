@@ -3,8 +3,12 @@ class UserIdentitiesController < ApplicationController
     before_action :authenticate
 
     def create
+        # Version 1
+        # params[:user_identity][:identity]
+
+        # Version 2
         user_identity = UserIdentity.new(user: current_user, identity: Identity.find(params[:identity_id]))
-        authorize(user_identity)
+        # authorize(user_identity)
         if user_identity.save
             render json: user_identity
             # redirect_to identity_path(params[:identity_id])
