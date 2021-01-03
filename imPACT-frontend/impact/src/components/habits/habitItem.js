@@ -8,9 +8,11 @@ class habitItem extends Component {
 
         const { build, title, number, frequency} = this.props
         return(
+        
             <div>
                 <Link to={"/habits"}> {title}</Link>
             </div>
+        
         )
     }
 }

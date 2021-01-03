@@ -23,25 +23,25 @@ export const getAllHabits = () => {
     }
 }
 
-// export const getMyHabits = () => {
-//     return async function (dispatch) {
-//         try{
-//             const res = await fetch(`http://localhost:3001/users/${userId}/habits`, {
-//                 credentials: 'include'
-//             })
-//             if(!res.ok){
-//                 throw res
-//             }
-//             const habitJson = await res.json()
-//             dispatch({
-//                 type: GET_MY_HABITS,
-//                 payload: habitJson
-//             })
-//         }catch(error){
-//             console.log(error)
-//         }
-//     }
-// }
+export const getMyHabits = (userId) => {
+    return async function (dispatch) {
+        try{
+            const res = await fetch(`http://localhost:3001/users/${userId}/habits`, {
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const habitJson = await res.json()
+            dispatch({
+                type: GET_MY_HABITS,
+                payload: habitJson
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
 
 
 export const addHabit = (csrf_token, build, title, frequency_number, frequency) => {

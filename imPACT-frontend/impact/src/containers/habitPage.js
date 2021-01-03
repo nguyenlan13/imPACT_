@@ -27,15 +27,16 @@ class habitPage extends Component {
             <div className="page">
             <h1>Add a New Habit:</h1>
             <HabitForm handleSubmit={this.submitHandler}/>
-            {sortedHabits.map(habit => {
-                    return <HabitItem
-                    title={habit.title}
-                    frequency_number={habit.frequency_number}
-                    // frequency={habit.frequency}
-                    />
-                })}
-            </div>
-            
+                <div className="card">
+                {sortedHabits.map(habit => {
+                        return  <HabitItem 
+                        title={habit.title}
+                        frequency_number={habit.frequency_number}
+                        // frequency={habit.frequency}
+                        />
+                    })}
+               </div>
+            </div> 
         )
     }
 }
