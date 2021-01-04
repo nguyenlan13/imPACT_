@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post "/link" => "identity_habits#create", as: "link"
     delete "/unlink" => "identity_habits#destroy", as: "unlink"
 
-    resources :identities, only: [:index, :new, :create]
+    resources :identities, only: [:index, :new, :create, :show]
     resources :habits
     resources :users, except: [:new]
     
