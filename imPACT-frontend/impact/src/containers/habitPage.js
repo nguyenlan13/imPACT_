@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import HabitForm from '../components/habits/habitForm'
 import { getAllHabits } from '../actions/habit'
 import { addHabit } from '../actions/habit'
-import HabitItem from '../components/habits/habitItem'
+import HabitList from '../components/habits/habitList'
 
 class habitPage extends Component {
 
@@ -28,11 +28,15 @@ class habitPage extends Component {
             <h1>Add a New Habit:</h1>
             <HabitForm handleSubmit={this.submitHandler}/>
                 <div className="card">
-                {sortedHabits.map(habit => {
-                        return  <HabitItem 
+                    <h3>Current Habits:</h3>
+                    {sortedHabits.map(habit => {
+                        return  <HabitList
+                        build={habit.build}
                         title={habit.title}
                         frequency_number={habit.frequency_number}
-                        // frequency={habit.frequency}
+                        frequency={habit.frequency}
+                        key={habit.id}
+                        habitId={habit.id}
                         />
                     })}
                </div>

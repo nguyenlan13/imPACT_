@@ -13,7 +13,7 @@ class signupPage extends Component {
 
     submitHandler = async (email, username, name, password) => {
         await this.props.signup(this.props.csrf_token, email, username, name, password)
-        this.props.history.push("/profile")
+        this.props.history.push("/home")
     }
 
     render(){

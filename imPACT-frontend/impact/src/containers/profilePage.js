@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { getMyHabits } from '../actions/habit' 
 
 class Profile extends Component {
 
@@ -11,7 +12,7 @@ class Profile extends Component {
         
         return(
             <div className="page">
-                <h1>PROFILE</h1>
+                <h1>My Profile</h1>
 
 
             </div>
@@ -20,4 +21,22 @@ class Profile extends Component {
 
 }
 
-export default Profile
+const mapStateToProps = (state) => {
+    const { csrf_token, habits, identities } = state
+    return {
+        csrf_token: csrf_token,
+        myHabits: habits.myHabits,
+        myIdentitites: identities.myIdentities
+    }
+ }
+ 
+
+
+
+ const mapDispatchToProps = (dispatch) => ({
+        get_my_habits: () => dispatch(getMyHabits()),
+        // get_my_identities: () => dispatch(getMyIdentities())
+ })
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

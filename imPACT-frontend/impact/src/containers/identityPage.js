@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import IdentityForm from '../components/identities/identityForm'
 import { addIdentity, getAllIdentities } from '../actions/identity'
-import IdentityItem from '../components/identities/identityItem'
+import IdentityList from '../components/identities/identityList'
+import { joinIdentity } from '../actions/identity'
 
 class identityPage extends Component {
 
@@ -27,30 +28,35 @@ class identityPage extends Component {
             <div className="page">
                 <h1>Add an Identity:</h1>
                 <IdentityForm handleSubmit={this.submitHandler}/>
-                {sortedIdentities.map(identity => {
-                    return <IdentityItem
-                    pact_name={identity.pact_name}
-                    description={identity.description}
-                    
-                    />
-                })}
-                
+                <div className="card">
+                    <h3>Current Pacts</h3>
+                    {sortedIdentities.map(identity => {
+                        return <IdentityList
+                        pact_name={identity.pact_name}
+                        description={identity.description}
+                        key={identity.id}
+                        identityId={identity.id}
+                        />
+                    })}
+                </div>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-   const { csrf_token, identities } = state
+   const { csrf_token, identities, user } = state
    return {
        csrf_token: csrf_token,
-       identities: identities.identities
+       identities: identities.identities,
+       user: user
    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
     get_all_identities: () => dispatch(getAllIdentities()),
-    add_identity: (csrf_token, pact_name, description) => dispatch(addIdentity(csrf_token, pact_name, description))
+    add_identity: (csrf_token, pact_name, description) => dispatch(addIdentity(csrf_token, pact_name, description)),
+    join_identity: (userId, identityId) => dispatch(joinIdentity(userId, identityId))
 })
 
 // export default identityPage
