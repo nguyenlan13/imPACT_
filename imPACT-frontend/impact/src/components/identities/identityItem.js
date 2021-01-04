@@ -19,7 +19,9 @@ class identityItem extends Component {
         const { identity } = this.props
         return(
             <div>
+                <h1>Pacts</h1>
               {identity.pact_name}- {identity.description}
+         
                 <button onClick={this.handleJoin}>Join Pact</button> 
             </div>
         )
