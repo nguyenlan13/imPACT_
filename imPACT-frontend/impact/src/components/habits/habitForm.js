@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import Select from "react-select"
-
-
-
+// import Select from "react-select"
 
 const HabitForm = (props) => {
     const [build, setBuild] = useState("")
@@ -20,33 +17,27 @@ const HabitForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-
         props.handleSubmit(build, title, frequency_number, frequency)
-    
     }
-
-
 
     return (
   
         <form onSubmit={handleSubmit}>
             <label>Build</label>
             <input
-
                 type="radio"
                 label="Build"
-                checked={build === "Build"}
+                checked={build === 'true'}
                 onChange={event => setBuild(event.target.value)}
-                value="Build"
+                value={true}
             />
             <label>Quit</label>
             <input
-        
                 type="radio"
                 label="Quit"
-                checked={build === "Quit"}
+                checked={build === 'false'}
                 onChange={event => setBuild(event.target.value)}
-                value="Quit"
+                value={false}
             />
             <br/>
             <br/>
@@ -68,7 +59,6 @@ const HabitForm = (props) => {
                 value={frequency_number}
             />
             time(s) per
-    
             <select
                 className="dropdown"
                 type="select"
@@ -76,14 +66,10 @@ const HabitForm = (props) => {
                 value={frequency}
                 onChange={event => setFrequency(event.target.value)}
             >
-
                 {freq.map(item => {
                     return <option>{item}</option>
                 })}
             </select>
-            
-          
-
             <br/>
             <br/>
             <input value="Create Habit" type="submit" />

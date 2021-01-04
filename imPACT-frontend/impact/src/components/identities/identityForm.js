@@ -13,6 +13,7 @@ const IdentityForm = (props) => {
 return (
     <form onSubmit={handleSubmit}>
 
+        Pact Name:
         <input
             className="mr-sm-2"
             type="text"
@@ -21,6 +22,7 @@ return (
             value={pact_name}
         />
         <br/>
+        Description:
         <input
             className="mr-sm-2"
             type="text"
