@@ -1,5 +1,6 @@
 import { GET_ALL_HABITS,
         GET_MY_HABITS,
+        GET_HABIT,
         ADD_HABIT
     } from '../actionTypes'
 
@@ -15,6 +16,27 @@ export const getAllHabits = () => {
             const habitJson = await res.json()
             dispatch({
                 type: GET_ALL_HABITS,
+                payload: habitJson
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+export const getHabit = (habitId) => {
+    return async function (dispatch) {
+        try{
+            const res = await fetch(`http://localhost:3001/habits/${habitId}`, {
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const habitJson = await res.json()
+            console.log(habitJson)
+            dispatch({
+                type: GET_HABIT,
                 payload: habitJson
             })
         }catch(error){
