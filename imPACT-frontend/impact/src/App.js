@@ -4,13 +4,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar'
-import Home from './containers/home'
+import Welcome from './containers/welcome'
+import Dashboard from './containers/Dashboard'
 import Profile from './containers/profilePage'
 import Identity from './containers/identityPage'
 import Habit from './containers/habitPage'
 import Login from './containers/loginPage'
 import Signup from './containers/signupPage'
-
+import IdentityItem from './components/identities/identityItem'
+import HabitItem from './components/habits/habitItem'
 
 function App() {
   return (
@@ -18,12 +20,15 @@ function App() {
         <div className="App">
             <Navbar/>
             <Switch>
+                <Route path="/identities/:identityId"  render={({match}) => (<IdentityItem match={match} />)} />
+                <Route path="/habits/:habitId"  render={({match}) => (<HabitItem match={match} />)} />
                 <Route exact path="/identities" component={Identity}/>
                 <Route exact path="/habits" component={Habit}/>
                 <Route exact path="/profile" component={Profile}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/signup" component={Signup}/>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/" component={Welcome}/>
             </Switch>
         </div>
       </Router>

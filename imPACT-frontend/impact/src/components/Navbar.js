@@ -10,6 +10,9 @@ function Navbar() {
             <Link to="/">
                 <div><img id="logo" src={Logo} alt=""/></div>
             </Link>
+            <Link to="/dashboard">
+                <li className="navlink">Home</li>
+            </Link>
             <Link to="/profile">
                 <li className="navlink">My Profile</li>
             </Link>
