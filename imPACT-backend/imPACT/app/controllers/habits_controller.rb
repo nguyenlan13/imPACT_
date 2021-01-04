@@ -27,6 +27,7 @@ class HabitsController < ApplicationController
         habit = Habit.find(params[:id])
         step = habit.steps.build
         commentable = habit
+        render json: habit
     end
 
     def habit_params
