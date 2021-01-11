@@ -19,7 +19,7 @@ export default function identityReducer(state = {
         case GET_MY_IDENTITIES:
             return {...state, myIdentities: action.payload}
         case ADD_IDENTITY:
-            return {...state, Identities:[...state.identities, action.payload]}      
+            return {...state, identities:[...state.identities, action.payload]}      
         default:
             return state
     }

@@ -6,14 +6,15 @@ import {
 } from '../actionTypes'
 
 export default function userReducer(state = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    user:{}
 }, action){
 
     switch(action.type){
         case LOG_IN_USER: 
-            return {...action.payload, isAuthenticated: true}
+            return {user:[...action.payload], isAuthenticated: true}
         case SIGN_UP_USER:
-            return {...action.payload, isAuthenticated: true}
+            return {user:[...action.payload], isAuthenticated: true}
         case LOGOUT:
             return {...state, isAuthenticated: false}
         case JOIN_IDENTITY:
