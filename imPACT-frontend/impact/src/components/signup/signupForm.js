@@ -2,16 +2,16 @@ import React, { useState } from "react";
 
 const SignupForm = (props) => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
     // send the inputs to the signup thing
-    console.log(email, username, name, password);
+    console.log(email, name, username, password);
     setEmail("");
-    setUsername("");
     setName("");
+    setUsername("");
     setPassword("");
 
    props.handleSubmit(email, username, name, password)
@@ -29,17 +29,17 @@ const SignupForm = (props) => {
       <input
         className="mr-sm-2"
         type="text"
-        placeholder="Username"
-        onChange={e => setUsername(e.target.value)}
-        value={username}
+        placeholder="Name"
+        onChange={e => setName(e.target.value)}
+        value={name}
       />
       <br/>
       <input
         className="mr-sm-2"
         type="text"
-        placeholder="Name"
-        onChange={e => setName(e.target.value)}
-        value={name}
+        placeholder="Username"
+        onChange={e => setUsername(e.target.value)}
+        value={username}
       />
       <br/>
       <input
