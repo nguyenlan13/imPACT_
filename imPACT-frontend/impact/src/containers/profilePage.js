@@ -15,6 +15,8 @@ class Profile extends Component {
                 <h1>My Profile</h1>
 
 
+            
+
             </div>
         )
     }

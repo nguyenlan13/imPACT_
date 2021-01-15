@@ -12,7 +12,7 @@ class loginPage extends Component {
 
     submitHandler = async (email, password) => {
         await this.props.login(this.props.csrf_token, email, password)
-        this.props.history.push("/home")
+        this.props.history.push("/dashboard")
     }
 
 
@@ -26,9 +26,17 @@ class loginPage extends Component {
     }
 }
 
-const mapStateToProps = ({csrf_token}) => ({
-    csrf_token
-})
+// const mapStateToProps = ({csrf_token}) => ({
+//     csrf_token
+// })
+
+const mapStateToProps = (state) => {
+    const { csrf_token, user } = state
+    return {
+        csrf_token: csrf_token,
+        user: user
+    }
+ }
 
 const mapDispatchToProps = (dispatch) => ({
     get_token: () => dispatch(getToken()),
