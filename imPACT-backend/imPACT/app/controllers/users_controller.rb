@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
     def new
         user = User.new
@@ -10,7 +10,7 @@ class UserController < ApplicationController
         if user.save
             log_in(user)
             cookies["logged_in"] = true
-            render json: user, except [:password_digest]
+            render json: user, except: [:password_digest]
         else
             render json: {errors: user.errors.full_messages}, status: 400
         end
