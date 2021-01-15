@@ -22,6 +22,9 @@ function Navbar() {
             <Link to="/identities">
                 <li className="navlink">Identities</li>
             </Link>
+            <Link to="/about">
+                <li className="navlink">About</li>
+            </Link>
             <Link to="/login">
                 <li className="navlink">Login</li>
             </Link>
