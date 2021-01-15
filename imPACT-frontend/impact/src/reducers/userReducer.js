@@ -9,7 +9,7 @@ export default function userReducer(state = {
     isAuthenticated: false,
     user:{}
 }, action){
-
+console.log(user)
     switch(action.type){
         case LOG_IN_USER: 
             return {user:[...action.payload], isAuthenticated: true}

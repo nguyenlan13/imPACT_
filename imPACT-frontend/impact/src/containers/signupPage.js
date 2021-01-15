@@ -11,9 +11,9 @@ class signupPage extends Component {
         this.props.get_token()
     }
 
-    submitHandler = async (email, username, name, password) => {
-        await this.props.signup(this.props.csrf_token, email, username, name, password)
-        this.props.history.push("/home")
+    submitHandler = async (email, name, username, password) => {
+        await this.props.signup(this.props.csrf_token, email, name, username, password)
+        this.props.history.push("/dashboard")
     }
 
     render(){
@@ -33,7 +33,7 @@ const mapStateToProps = ({csrf_token}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     get_token: () => dispatch(getToken()),
-    signup: (csrf_token, email, username, name, password) => dispatch(signup(csrf_token, email, username, name, password))
+    signup: (csrf_token, email, name, username, password) => dispatch(signup(csrf_token, email, name, username, password))
 })
 
 

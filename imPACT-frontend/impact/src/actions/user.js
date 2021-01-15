@@ -19,6 +19,7 @@ export const login = (csrf_token, email, password) => {
                 throw res
             }
             let loginJson = await res.json()
+            console.log(loginJson)
             dispatch({
                 type: LOG_IN_USER,
                 payload: loginJson
@@ -27,6 +28,7 @@ export const login = (csrf_token, email, password) => {
                 //         password: password
                 // }
             });
+            return loginJson
             // return await res.json()
         }catch(error){
             console.log(error.message)
@@ -36,7 +38,7 @@ export const login = (csrf_token, email, password) => {
 
 
 
-export const signup = (csrf_token, email, username, name, password) => {
+export const signup = (csrf_token, email, name, username,  password) => {
     return async function (dispatch) {
         try{
             const res = await fetch("http://localhost:3001/signup", {
@@ -46,7 +48,7 @@ export const signup = (csrf_token, email, username, name, password) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({user:{email, username, name, password}}),
+                body: JSON.stringify({user:{email, name, username, password}}),
                 credentials: 'include'
             })
             // if(!res.ok){
@@ -63,7 +65,7 @@ export const signup = (csrf_token, email, username, name, password) => {
                 // }
             });
         }
-        return signupJson
+        // return signupJson
             // return await res.json()
         }catch(error){
             console.log(error.message)
