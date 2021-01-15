@@ -12,7 +12,7 @@ class identityList extends Component {
         const { pact_name, description, identityId} = this.props
         return(
             <div>
-                <Link to={`/identities/${identityId}`}> {pact_name} </Link>
+                <Link to={`/identities/${identityId}`}> {pact_name} - {description} </Link>
 
             </div>
         )

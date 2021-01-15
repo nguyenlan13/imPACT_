@@ -22,7 +22,7 @@ return (
             value={pact_name}
         />
         <br/>
-        Description:
+        IDentity:
         <input
             className="mr-sm-2"
             type="text"
@@ -30,6 +30,7 @@ return (
             onChange={event => setDescription(event.target.value)}
             value={description}
         />
+        <br/>
         <br/>
         <input type="submit" />
     </form>

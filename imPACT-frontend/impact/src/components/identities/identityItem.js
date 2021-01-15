@@ -29,7 +29,7 @@ class identityItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { csrf_token, user, identities} = state;
+    const { csrf_token, user, identities } = state;
     return { 
         csrf_token: csrf_token, 
         user: user,
