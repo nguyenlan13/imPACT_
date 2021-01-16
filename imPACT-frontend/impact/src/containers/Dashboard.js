@@ -15,7 +15,7 @@ class Dashboard extends Component {
 
     render(){
 
-        const { habits, identities } = this.props
+        const { habits, identities, user } = this.props
 
         
         return(
@@ -32,16 +32,21 @@ class Dashboard extends Component {
                         />
                     })}
                 </div>
+                <div className="spacing">
                 <div className="card">
                     <Link to="/identities">Add an IDentity</Link>
+                </div>
                 </div>
                 <div className="card">
                     <Link to="/habits">Create a new Habit</Link>
                 </div>
+                <div className="card">
+                    {/* {userId}={user.id} */}
+                    {/* <Link to={`/profile/${this.props.user.id}`}>Create a new Habit</Link> */}
+                </div>
             </div>
         )
     }
-
 }
 
 
