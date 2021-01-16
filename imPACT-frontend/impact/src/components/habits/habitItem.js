@@ -27,7 +27,6 @@ class habitItem extends Component {
                 </div>
             )
         }else {
-         
             return(
                 <div>
                     <h1>Habits: </h1>
