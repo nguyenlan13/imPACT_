@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 import { addIdentity, getAllIdentities, joinIdentity } from '../actions/identity'
 import { addHabit, getAllHabits } from '../actions/habit'
+// import { getUser } from '../actions/user'
 import IdentityList from '../components/identities/identityList'
 // import IdentityForm from '../components/identities/identityForm'
 
@@ -10,6 +11,7 @@ class Dashboard extends Component {
 
     componentDidMount(){
         this.props.get_all_identities()
+        // this.props.get_user()
     }
 
 
@@ -42,7 +44,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="card">
                     {/* {userId}={user.id} */}
-                    {/* <Link to={`/profile/${this.props.user.id}`}>Create a new Habit</Link> */}
+                    {/* <Link to={`/profile/${this.props.user.id}`}>My Profile</Link> */}
                 </div>
             </div>
         )
@@ -65,6 +67,7 @@ const mapStateToProps = (state) => {
     
 const mapDispatchToProps = (dispatch) => ({
     get_all_habits: () => dispatch(getAllHabits()),
+    // get_user: () => dispatch(getUser()),
     add_habit: (csrf_token, build, title, frequency_number, frequency) => dispatch(addHabit(csrf_token, build, title, frequency_number, frequency)),
     get_all_identities: () => dispatch(getAllIdentities()),
     add_identity: (csrf_token, pact_name, description) => dispatch(addIdentity(csrf_token, pact_name, description)),

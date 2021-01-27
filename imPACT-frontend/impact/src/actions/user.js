@@ -1,5 +1,6 @@
 import { LOG_IN_USER } from '../actionTypes'
 import { SIGN_UP_USER } from '../actionTypes'
+import { GET_USER } from '../actionTypes'
 import { LOGOUT } from '../actionTypes'
 
 export const login = (csrf_token, email, password) => {
@@ -69,6 +70,28 @@ export const signup = (csrf_token, email, name, username,  password) => {
             // return await res.json()
         }catch(error){
             console.log(error.message)
+        }
+    }
+}
+
+
+export const getUser = () => {
+    return async function (dispatch) {
+        try{
+            const res = await fetch('http://localhost:3001/dashboard', {
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const userJson = await res.json()
+            console.log(userJson)
+            dispatch({
+                type: GET_USER,
+                payload: userJson
+            })
+        }catch(error){
+            console.log(error)
         }
     }
 }
