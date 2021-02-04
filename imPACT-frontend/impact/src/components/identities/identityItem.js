@@ -13,6 +13,7 @@ class identityItem extends Component {
     handleJoin = async () => {
         const identityId = this.props.match.params.identityId
         await this.props.join_identity(this.props.csrf_token, identityId)
+        
     }
 
     render(){
