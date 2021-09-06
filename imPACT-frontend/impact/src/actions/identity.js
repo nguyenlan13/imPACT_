@@ -29,7 +29,12 @@ export const getIdentity = (identityId) => {
     return async function (dispatch) {
         try{
             const res = await fetch(`http://localhost:3001/identities/${identityId}`, {
-                credentials: 'include'
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${token}`
+                }
+                // credentials: 'include'
             })
             if(!res.ok){
                 throw res
@@ -46,7 +51,7 @@ export const getIdentity = (identityId) => {
     }
 }
 
-export const addIdentity = (csrf_token, pact_name, description) => {
+export const addIdentity = (pact_name, description) => {
     return async function (dispatch) {
         try{
             let response = await fetch("http://localhost:3001/identities",{
@@ -54,10 +59,10 @@ export const addIdentity = (csrf_token, pact_name, description) => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
+                    // 'X-CSRF-TOKEN': csrf_token
                 },
                 body: JSON.stringify({identity: {pact_name, description}}),
-                credentials: 'include'
+                // credentials: 'include'
             })
             if(!response.ok){
                 throw response
@@ -76,8 +81,8 @@ export const addIdentity = (csrf_token, pact_name, description) => {
 
 
 
-export const joinIdentity = (csrf_token, identityId) => {
-    console.log(csrf_token, identityId)
+export const joinIdentity = (identityId) => {
+    console.log(identityId)
     return async function (dispatch) {
         try{
             let response = await fetch("http://localhost:3001/join",{
@@ -85,7 +90,7 @@ export const joinIdentity = (csrf_token, identityId) => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
+                    // 'X-CSRF-TOKEN': csrf_token
                 },
                 //  This sends the payload that looks like this:
                 //  {
@@ -101,7 +106,7 @@ export const joinIdentity = (csrf_token, identityId) => {
 
                 //  Version #2
                 body: JSON.stringify({ identity_id: identityId }),
-                credentials: 'include'
+                // credentials: 'include'
             })
             if(!response.ok){
                 throw response

@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 import tokenReducer from './tokenReducer'
 import identityReducer from './identityReducer'
 import habitReducer from './habitReducer'
+import userReducer from './userReducer'
 
 
 const rootReducer = (combineReducers) ({
-    csrf_token: tokenReducer,
+    token: tokenReducer,
+    user: userReducer,
     identities: identityReducer,
     habits: habitReducer
 

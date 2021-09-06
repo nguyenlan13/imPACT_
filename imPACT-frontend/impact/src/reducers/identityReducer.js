@@ -8,7 +8,7 @@ import {
 export default function identityReducer(state = {
     identities:[],
     identity:{},
-    myIdentities:[],
+    myIdentities:[]
 
 }, action){
     switch(action.type){

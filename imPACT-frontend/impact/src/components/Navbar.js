@@ -7,15 +7,19 @@ function Navbar() {
     return (
         <nav className="navbar">
             <ul className="navlink">
-            <Link to="/">
+                
+            {/* <Link to="/">
                 <div><img id="logo" src={Logo} alt=""/></div>
-            </Link>
-            <Link to="/dashboard">
+            </Link> */}
+            <Link to="/">
                 <li className="navlink">Home</li>
             </Link>
-            <Link to="/profile">
+            {/* <Link to="/dashboard">
+                <li className="navlink">Home</li>
+            </Link> */}
+            {/* <Link to="/profile">
                 <li className="navlink">My Profile</li>
-            </Link>
+            </Link> */}
             <Link to="/habits">
                 <li className="navlink">Habits</li>
             </Link>

@@ -8,7 +8,12 @@ export const getAllHabits = () => {
     return async function (dispatch) {
         try{
             const res = await fetch("http://localhost:3001/habits", {
-                credentials: 'include'
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${token}`
+                }
+                // credentials: 'include'
             })
             if(!res.ok){
                 throw res
@@ -28,7 +33,12 @@ export const getHabit = (habitId) => {
     return async function (dispatch) {
         try{
             const res = await fetch(`http://localhost:3001/habits/${habitId}`, {
-                credentials: 'include'
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${token}`
+                }
+                // credentials: 'include'
             })
             if(!res.ok){
                 throw res
@@ -49,7 +59,12 @@ export const getMyHabits = (userId) => {
     return async function (dispatch) {
         try{
             const res = await fetch(`http://localhost:3001/users/${userId}/habits`, {
-                credentials: 'include'
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${token}`
+                }
+                // credentials: 'include'
             })
             if(!res.ok){
                 throw res
@@ -74,10 +89,10 @@ export const addHabit = (csrf_token, build, title, frequency_number, frequency) 
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
+                    // 'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({habit: {build, title, frequency_number, frequency}}),
-                credentials: 'include'
+                // credentials: 'include'
             })
             if(!response.ok){
                 throw response

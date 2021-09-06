@@ -2,8 +2,9 @@ import { LOG_IN_USER } from '../actionTypes'
 import { SIGN_UP_USER } from '../actionTypes'
 import { GET_USER } from '../actionTypes'
 import { LOGOUT } from '../actionTypes'
+import { getToken } from './authSetup'
 
-export const login = (csrf_token, email, password) => {
+export const login = (email, password) => {
     return async function (dispatch) {
         try{
             const res = await fetch("http://localhost:3001/login", {
@@ -11,16 +12,18 @@ export const login = (csrf_token, email, password) => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
+                    // 'Authorization': `Bearer ${csrf_token}`
+                    // 'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({email, password}),
-                credentials: 'include'
+                body: JSON.stringify({email, password})
+                // credentials: 'include'
             })
             if(!res.ok){
-                throw res
+                throw new Error("login failed")
             }
             let loginJson = await res.json()
             console.log(loginJson)
+            localStorage.setItem("token", loginJson.token)
             dispatch({
                 type: LOG_IN_USER,
                 payload: loginJson
@@ -33,6 +36,7 @@ export const login = (csrf_token, email, password) => {
             // return await res.json()
         }catch(error){
             console.log(error.message)
+            return error.message
         }
     }
 }
@@ -47,10 +51,10 @@ export const signup = (csrf_token, email, name, username,  password) => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
+                    // 'X-CSRF-TOKEN': csrf_token
                 },
                 body: JSON.stringify({user:{email, name, username, password}}),
-                credentials: 'include'
+                // credentials: 'include'
             })
             // if(!res.ok){
             //     throw res
@@ -78,8 +82,14 @@ export const signup = (csrf_token, email, name, username,  password) => {
 export const getUser = () => {
     return async function (dispatch) {
         try{
-            const res = await fetch('http://localhost:3001/dashboard', {
-                credentials: 'include'
+            const token = getToken()
+            const res = await fetch('http://localhost:3001/whoami', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                // credentials: 'include'
             })
             if(!res.ok){
                 throw res

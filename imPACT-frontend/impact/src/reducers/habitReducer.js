@@ -9,7 +9,7 @@ import {
 export default function habitReducer(state = {
     habits:[],
     habit:{},
-    myHabits:[],
+    myHabits:[]
 
 }, action){
 

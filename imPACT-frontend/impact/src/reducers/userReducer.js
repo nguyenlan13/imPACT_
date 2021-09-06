@@ -8,16 +8,17 @@ import {
 
 export default function userReducer(state = {
     isAuthenticated: false,
+    // token:"",
     user:{}
 }, action){
-console.log(user)
+console.log(action.payload)
     switch(action.type){
         case LOG_IN_USER: 
             return {...action.payload, isAuthenticated: true}
         case SIGN_UP_USER:
             return {...action.payload, isAuthenticated: true}
         case GET_USER:
-            return {...state, user: action.payload}    
+            return {...state, user: action.payload, isAuthenticated: true}    
         case LOGOUT:
             return {...state, isAuthenticated: false}
         case JOIN_IDENTITY:
