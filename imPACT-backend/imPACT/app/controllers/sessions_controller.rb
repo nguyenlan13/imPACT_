@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     # end
 
     def whoami
-        payload = {name: current_user.name, email: current_user.email, username: current_user.username}
+        payload = {id: current_user.id, name: current_user.name, email: current_user.email, username: current_user.username}
         render json: payload
     end
 

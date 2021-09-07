@@ -18,7 +18,7 @@ class IdentitiesController < ApplicationController
     end
 
     def show
-        user = current_user
+        current_user
         identity = Identity.find(params[:id])
         commentable = identity
         render json: identity
