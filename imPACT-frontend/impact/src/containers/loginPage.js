@@ -54,6 +54,7 @@ export default function LoginPage(){
 
     const submitHandler = async (email, password) => {
         dispatch(login(email, password))
+       
         // history.push("/dashboard")
     }
   

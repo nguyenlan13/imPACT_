@@ -1,3 +1,4 @@
+
 export const USER = {
     INDEX: { name: "My Profile", path: "/" },
     DASHBOARD: {
@@ -5,7 +6,7 @@ export const USER = {
       path: "/dashboard",
     },
     MY_PACTS: {
-      name: "Pacts",
+      name: "My Pacts",
       path: "/my_identities",
     },
     MY_HABITS: {

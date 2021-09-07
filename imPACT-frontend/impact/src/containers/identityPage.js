@@ -4,6 +4,7 @@ import IdentityForm from '../components/identities/identityForm'
 import { addIdentity, getAllIdentities } from '../actions/identity'
 import IdentityList from '../components/identities/identityList'
 import { joinIdentity } from '../actions/identity'
+import { Card } from 'antd'
 
 class identityPage extends Component {
 
@@ -12,7 +13,7 @@ class identityPage extends Component {
     }
 
     submitHandler = async (pact_name, description) => {
-        await this.props.add_identity(this.props.csrf_token, pact_name, description)
+        await this.props.add_identity(pact_name, description)
         // this.props.history.push("/profile")
     }
 
@@ -28,8 +29,11 @@ class identityPage extends Component {
             <div className="page">
                 <h1>Add an Identity:</h1>
                 <IdentityForm handleSubmit={this.submitHandler}/>
-                <div className="card">
-                    <h3>Current Pacts</h3>
+                <br/>
+                <br/>
+                {/* <div className="card"> */}
+                <Card title="Current Pacts:" >
+                    {/* <h3>Current Pacts</h3> */}
                     {sortedIdentities.map(identity => {
                         return <IdentityList
                         pact_name={identity.pact_name}
@@ -38,16 +42,17 @@ class identityPage extends Component {
                         identityId={identity.id}
                         />
                     })}
-                </div>
+                </Card>
+                {/* </div> */}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-   const { csrf_token, identities, user } = state
+   const { token, identities, user } = state
    return {
-       csrf_token: csrf_token,
+       token: token,
        identities: identities.identities,
        user: user
    }
@@ -55,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     get_all_identities: () => dispatch(getAllIdentities()),
-    add_identity: (csrf_token, pact_name, description) => dispatch(addIdentity(csrf_token, pact_name, description)),
+    add_identity: (pact_name, description) => dispatch(addIdentity(pact_name, description)),
     join_identity: (userId, identityId) => dispatch(joinIdentity(userId, identityId))
 })
 

@@ -4,6 +4,7 @@ import HabitForm from '../components/habits/habitForm'
 import { getAllHabits } from '../actions/habit'
 import { addHabit } from '../actions/habit'
 import HabitList from '../components/habits/habitList'
+import { Card } from 'antd'
 
 class habitPage extends Component {
 
@@ -12,7 +13,7 @@ class habitPage extends Component {
     }
 
     submitHandler = async (build, title, frequency_number, frequency) => {
-        await this.props.add_habit(this.props.csrf_token, build, title, frequency_number, frequency)
+        await this.props.add_habit(build, title, frequency_number, frequency)
         // this.props.history.push("/profile")
     }
 
@@ -27,8 +28,11 @@ class habitPage extends Component {
             <div className="page">
             <h1>Add a New Habit:</h1>
             <HabitForm handleSubmit={this.submitHandler}/>
-                <div className="card">
-                    <h3>Current Habits:</h3>
+            <br/>
+            <br/>
+                {/* <div className="card"> */}
+                    <Card title="Current Habits:">
+                    {/* <h3>Current Habits:</h3> */}
                     {sortedHabits.map(habit => {
                         return  <HabitList
                         build={habit.build}
@@ -39,7 +43,8 @@ class habitPage extends Component {
                         habitId={habit.id}
                         />
                     })}
-               </div>
+                    </Card>
+                {/* </div> */}
             </div> 
         )
     }
@@ -47,16 +52,16 @@ class habitPage extends Component {
 
 
 const mapStateToProps = (state) => {
-    const { csrf_token, habits } = state
+    const { habits } = state
     return {
-        csrf_token: csrf_token,
+
         habits: habits.habits
     }
  }
     
 const mapDispatchToProps = (dispatch) => ({
     get_all_habits: () => dispatch(getAllHabits()),
-    add_habit: (csrf_token, build, title, frequency_number, frequency) => dispatch(addHabit(csrf_token, build, title, frequency_number, frequency))
+    add_habit: (build, title, frequency_number, frequency) => dispatch(addHabit(build, title, frequency_number, frequency))
 })
 
 

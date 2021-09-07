@@ -24,9 +24,8 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { csrf_token, habits, identities } = state
+    const { habits, identities } = state
     return {
-        csrf_token: csrf_token,
         myHabits: habits.myHabits,
         myIdentitites: identities.myIdentities
     }

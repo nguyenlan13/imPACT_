@@ -52,7 +52,6 @@ code {
 
 .login {
     text-align: center;
-
 }
 
 .page {
@@ -79,6 +78,27 @@ code {
     padding: 30px
 }
 
+.welcome {
+    text-align: right;
+    list-style: none;
+    /* justify-content: space-around; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    /* display: flex; */
+    /* text-align: center; */
+    /* text-decoration: none; */
+    color: White;
+    /* position: fixed; */
+    /* top: 0; */
+    /* width: 100%; */
+}
+
+.header {
+    font-size: xx-large;
+    font-weight: bold;
+}
 /* .spacing {
     padding: 30px;
     justify-content: space-between;

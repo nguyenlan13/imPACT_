@@ -12,7 +12,7 @@ class identityItem extends Component {
 
     handleJoin = async () => {
         const identityId = this.props.match.params.identityId
-        await this.props.join_identity(this.props.csrf_token, identityId)
+        await this.props.join_identity(identityId)
         
     }
 
@@ -30,9 +30,8 @@ class identityItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { csrf_token, user, identities } = state;
+    const { user, identities } = state;
     return { 
-        csrf_token: csrf_token, 
         user: user,
         identity: identities.identity
     }
@@ -40,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     get_identity: (identityId) => dispatch(getIdentity(identityId)),
-    join_identity: (csrf_token, identityId) => dispatch(joinIdentity(csrf_token, identityId))
+    join_identity: (identityId) => dispatch(joinIdentity(identityId))
 })
 
 
