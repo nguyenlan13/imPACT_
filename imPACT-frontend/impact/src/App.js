@@ -31,6 +31,9 @@ const App = () => {
   const dispatch = useDispatch()
   // const [userInfo, setUserInfo] = useState(undefined)
   // const token = useSelector((state) => state.token)
+  const user = useSelector((state) => state.user)
+ 
+  console.log(user)
 
   const handleToggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -41,9 +44,8 @@ const App = () => {
 
   }, [dispatch]) 
 
-  const user = useSelector((state) => state.user)
- console.log(user)
-
+  const userInfo = useSelector((state) => state.user.userInfo)
+  console.log(userInfo)
 
   return (
     
