@@ -1,19 +1,25 @@
 import React from "react"
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import Logo from './../assets/Logo.png'
 
 
 function Navbar() {
+
+    const user = useSelector((state) => state.user)
+
     return (
+
         <nav className="navbar">
             <ul className="navlink">
-                
+            {!user.isAuthenticated && (
+                <Link to="/">
+                    <div><img id="logo" src={Logo} alt=""/></div>
+                </Link>
+            )}
             {/* <Link to="/">
-                <div><img id="logo" src={Logo} alt=""/></div>
-            </Link> */}
-            <Link to="/">
                 <li className="navlink">Home</li>
-            </Link>
+            </Link> */}
             {/* <Link to="/dashboard">
                 <li className="navlink">Home</li>
             </Link> */}
@@ -29,13 +35,25 @@ function Navbar() {
             <Link to="/about">
                 <li className="navlink">About</li>
             </Link>
-            <Link to="/login">
-                <li className="navlink">Login</li>
-            </Link>
-            <Link to="/signup">
-                <li className="navlink">Sign Up</li>
-            </Link>
+            {!user.isAuthenticated && (
+                <Link to="/login">
+                    <li className="navlink">Login</li>
+                </Link>
+            )}
+            {!user.isAuthenticated && (
+                <Link to="/signup">
+                    <li className="navlink">Sign Up</li>
+                </Link>
+            )}
+            {user && user.isAuthenticated && (
+                <Link to="/logout">
+                    <li className="navlink">Log Out</li>
+                </Link>
+            )}
             </ul>
+            {user && user.isAuthenticated && (
+                <li className="welcome"> Welcome, {user.userInfo.name} </li>
+            )}
         </nav>
     )
 }
