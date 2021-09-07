@@ -1,4 +1,5 @@
 const GET_CSRF_TOKEN = "GET_CSRF_TOKEN"
+const GET_TOKEN = "GET_TOKEN"
 const LOADING = "LOADING"
 const LOG_IN_USER = "LOG_IN_USER"
 const SIGN_UP_USER = "SIGN_UP_USER"
@@ -19,6 +20,7 @@ const ADD_STEP = "ADD_STEP"
 
 export {
     GET_CSRF_TOKEN,
+    GET_TOKEN,
     LOADING,
     LOG_IN_USER,
     SIGN_UP_USER,
