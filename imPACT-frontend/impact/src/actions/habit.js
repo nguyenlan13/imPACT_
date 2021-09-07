@@ -4,14 +4,17 @@ import { GET_ALL_HABITS,
         ADD_HABIT
     } from '../actionTypes'
 
+import { getToken } from './authSetup'
+
 export const getAllHabits = () => {
     return async function (dispatch) {
         try{
+            const token = getToken()
             const res = await fetch("http://localhost:3001/habits", {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 }
                 // credentials: 'include'
             })
@@ -32,11 +35,12 @@ export const getAllHabits = () => {
 export const getHabit = (habitId) => {
     return async function (dispatch) {
         try{
+            const token = getToken()
             const res = await fetch(`http://localhost:3001/habits/${habitId}`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 }
                 // credentials: 'include'
             })
@@ -58,11 +62,12 @@ export const getHabit = (habitId) => {
 export const getMyHabits = (userId) => {
     return async function (dispatch) {
         try{
+            const token = getToken()
             const res = await fetch(`http://localhost:3001/users/${userId}/habits`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 }
                 // credentials: 'include'
             })
@@ -81,15 +86,16 @@ export const getMyHabits = (userId) => {
 }
 
 
-export const addHabit = (csrf_token, build, title, frequency_number, frequency) => {
+export const addHabit = (build, title, frequency_number, frequency) => {
     return async function (dispatch) {
         try{
+            const token = getToken()
             let response = await fetch('http://localhost:3001/habits/',{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({habit: {build, title, frequency_number, frequency}}),
                 // credentials: 'include'

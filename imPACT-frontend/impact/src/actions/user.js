@@ -32,6 +32,7 @@ export const login = (email, password) => {
                 //         password: password
                 // }
             });
+            window.location.reload()
             return loginJson
             // return await res.json()
         }catch(error){
@@ -43,7 +44,7 @@ export const login = (email, password) => {
 
 
 
-export const signup = (csrf_token, email, name, username,  password) => {
+export const signup = (email, name, username,  password) => {
     return async function (dispatch) {
         try{
             const res = await fetch("http://localhost:3001/signup", {
@@ -70,7 +71,7 @@ export const signup = (csrf_token, email, name, username,  password) => {
                 // }
             });
         }
-        // return signupJson
+        return signupJson
             // return await res.json()
         }catch(error){
             console.log(error.message)

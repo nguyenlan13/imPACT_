@@ -21,10 +21,21 @@
 //     }
 // }
 
+import { GET_TOKEN } from '../actionTypes'
+
 export const getToken = () => {
-    try{
-        return localStorage.getItem("token")
-    }catch(error){
-        return null
-    }
+    // return function (dispatch){
+        try{
+            return localStorage.getItem("token")
+            // const token = localStorage.getItem("token")
+            // dispatch({
+            //     type: GET_TOKEN,
+            //     payload: token
+            // })
+            // return token
+        }catch(error){
+            return null
+        }
+    // }
+  
 }
