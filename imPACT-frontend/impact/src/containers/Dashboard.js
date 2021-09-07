@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { Menu, Dropdown, Button } from 'antd';
+import { Card, Menu, Dropdown, Button, Row, Col } from 'antd';
 import { addIdentity, getAllIdentities, joinIdentity } from '../actions/identity'
 import { addHabit, getAllHabits } from '../actions/habit'
 // import { getUser } from '../actions/user'
@@ -12,8 +12,9 @@ import IdentityList from '../components/identities/identityList'
 export default function Dashboard(){
 
         const dispatch = useDispatch()
+        const user = useSelector((state) => state.user.userInfo)
         const identities = useSelector((state) => state.identities.identities)
-
+console.log(user)
         // const [sortedList, setSortedList] = useState([])
 
         useEffect(() => {
@@ -32,34 +33,46 @@ export default function Dashboard(){
 
         return(
              <div className="page">
-                 <h1>Dashboard</h1>
-                 <div className="card">
-                     <Dropdown overlay={list} trigger={['click']}>
-                         <Button>
-                        {/* <a className="ant-dropdown-link" onClick={e => e.preventDefault()}> */}
-                        Join a Pact
-                        {/* </a> */}
-                        </Button>
-                    </Dropdown>
+                {/* <h1 className="welcome">Welcome, {user.name}!</h1> */}
+                    <h1 className="header">Dashboard</h1>
+                    <br/>
+                    <Card>
+                        <Dropdown overlay={list} trigger={['click']}>
+                            <Button>
+                            {/* <a className="ant-dropdown-link" onClick={e => e.preventDefault()}> */}
+                            Join a Pact
+                            {/* </a> */}
+                            </Button>
+                        </Dropdown>
 
-                 {/* {sortedList.map(identity => {
-                         return <IdentityList
-                         pact_name={identity.pact_name}
-                         description={identity.description}
-                         key={identity.id}
-                         identityId={identity.id}
-                         />
-                     })} */}
-                 </div>
-                 <div className="spacing">
-                 <div className="card">
-                     <Link to="/identities">Add an IDentity</Link>
-                 </div>
-                 </div>
-                 <div className="card">
-                     <Link to="/habits">Create a new Habit</Link>
-                 </div>
-
+                    {/* {sortedList.map(identity => {
+                            return <IdentityList
+                            pact_name={identity.pact_name}
+                            description={identity.description}
+                            key={identity.id}
+                            identityId={identity.id}
+                            />
+                        })} */}
+        
+                    </Card>
+                    <br/>
+                    <br/>
+                    <Row gutter={16}>
+              
+                    <Col span={12}>
+                        <Card title="Most Recent Built Habits" >
+                        
+                            <Link to="/identities">Add an IDentity</Link>
+                        </Card>
+                    </Col>
+                   
+               
+                    <Col span={12}>
+                        <Card title="Most Recent Quit Habits" >
+                            <Link to="/habits">Create a new Habit</Link>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
         )
 

@@ -7,8 +7,8 @@ export default function MyProgress(){
 
 
     return(
-        <div>
-            <h1>My Progress</h1>
+        <div className="page">
+            <h1 className="header">My Progress</h1>
 
 
         </div>

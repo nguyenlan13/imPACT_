@@ -7,8 +7,8 @@ export default function MyActionSteps(){
 
 
     return(
-        <div>
-            <h1>My Action Steps</h1>
+        <div className="page">
+            <h1 className="header">My Action Steps</h1>
 
 
         </div>
