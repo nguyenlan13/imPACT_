@@ -46,7 +46,12 @@ code {
 
 #logo {
     padding-top: 20px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    width: 150px;
+}
+
+#logo1 {
+    padding-right: 10px;
     width: 150px;
 }
 
@@ -81,23 +86,36 @@ code {
 .welcome {
     text-align: right;
     list-style: none;
-    /* justify-content: space-around; */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding-right: 20px;
     padding-bottom: 20px;
-    /* display: flex; */
-    /* text-align: center; */
-    /* text-decoration: none; */
     color: White;
-    /* position: fixed; */
-    /* top: 0; */
-    /* width: 100%; */
 }
 
 .header {
     font-size: xx-large;
     font-weight: bold;
+}
+
+.label {
+    text-align: right;
+    padding-bottom: 5px;
+}
+
+.loginCard {
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+}
+
+.loginButton {
+    text-align: right;
+}
+
+.about {
+    text-align: justify;
 }
 /* .spacing {
     padding: 30px;

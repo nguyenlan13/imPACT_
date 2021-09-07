@@ -16,25 +16,19 @@ export const login = (email, password) => {
                     // 'X-CSRF-TOKEN': csrf_token
                 },
                 body: JSON.stringify({email, password})
-                // credentials: 'include'
             })
             if(!res.ok){
                 throw new Error("login failed")
             }
             let loginJson = await res.json()
-            console.log(loginJson)
+            // console.log(loginJson)
             localStorage.setItem("token", loginJson.token)
             dispatch({
                 type: LOG_IN_USER,
                 payload: loginJson
-                // {
-                //         email: email,
-                //         password: password
-                // }
             });
             window.location.reload()
             return loginJson
-            // return await res.json()
         }catch(error){
             console.log(error.message)
             return error.message
@@ -52,29 +46,28 @@ export const signup = (email, name, username,  password) => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${csrf_token}`
                     // 'X-CSRF-TOKEN': csrf_token
                 },
                 body: JSON.stringify({user:{email, name, username, password}}),
                 // credentials: 'include'
             })
-            // if(!res.ok){
-            //     throw res
-            // }
+            if(!res.ok){
+                throw res
+            }
             let signupJson = await res.json()
+            localStorage.setItem("token", signupJson.token)
             if(!Object.keys(signupJson).includes("errors")){
                 dispatch({
                     type: SIGN_UP_USER,
                     payload: signupJson
-                // {
-                //         email: email,
-                //         password: password
-                // }
             });
+            return signupJson
         }
-        return signupJson
-            // return await res.json()
+        window.location.reload()
         }catch(error){
             console.log(error.message)
+            return error.message
         }
     }
 }
@@ -90,9 +83,9 @@ export const getUser = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                // credentials: 'include'
             })
             if(!res.ok){
+                localStorage.removeItem("token")
                 throw res
             }
             const userJson = await res.json()
@@ -105,4 +98,14 @@ export const getUser = () => {
             console.log(error)
         }
     }
+}
+
+
+export const logout = () => {
+    try{
+        localStorage.removeItem("token")
+    }catch(error){
+        console.log(error)
+    } 
+    window.location.reload()
 }

@@ -2,44 +2,42 @@ import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { Card, Row, Col } from 'antd';
-import { getMyIdentities } from '../../actions/identity'
+import { getIdentityHabits } from '../../actions/identity'
 
 
-export default function MyPacts(){
+export default function IdentityHabits({match}){
 
     const dispatch = useDispatch()
    
     useEffect(() => {
-        dispatch(getMyIdentities());
+        dispatch(getIdentityHabits());
         // setError("");
     }, []);
 
-    const myIdentities = useSelector((state) => state.identities.myIdentities)
-    console.log(myIdentities)
+    // const identityId = match.params.identityId
+    const identityHabits = useSelector((state) => state.identities.myIdentities)
+    console.log(identityHabits)
 
     return(
         <div className="page">
-            <h1 className="header">My Pacts</h1>
+            <h1 className="header">My Habits</h1>
             <div>
                 <Row>
-                    {myIdentities.map((identity) => (
-                        <Col span={8} key={identity.id}>
-                            <Link to={`/identities/${identity.id}/habits`}>
+                    {identityHabits.map((habit) => (
+                        <Col span={8} key={habit.id}>
+                            {/* <Link to={`/identities/${identityId}/habits`}> */}
                             <Card
                             hoverable
                             bordered={true}
                             style={{ width: 200 }}
                             >
-                            <h2>{identity.pact_name}</h2>
+                            <h2>{habit.title}</h2>
                             <hr/>
-                            <h5>{identity.description}</h5>
-                                 {/* {identity.users.map((user) =>(
-                                    user.username
-                                ))} */}
+                            <h5>{habit.build}</h5>
                             </Card>
                             <br/>
                             <br/>
-                            </Link>
+                            {/* </Link> */}
                         </Col>
                     )
                     )}

@@ -1,0 +1,4 @@
+
+json = {
+    pact_name: identity.pact_name
+}

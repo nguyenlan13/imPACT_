@@ -1,0 +1,3 @@
+@identities.map do |identity|
+    {id: identity.id, pact_name: identity.pact_name, description: identity.description, users: identity.users}
+end

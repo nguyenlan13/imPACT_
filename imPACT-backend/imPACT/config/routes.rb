@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "/dashboard" => "users#dashboard", as: "dashboard"
 
     post "/join" => "user_identities#create", as: "join"
-    delete "/leave" => "user_identities#destroy", as: "leave_pact"
+    delete "/leave" => "user_identities#destroy", as: "leave"
     post "/link" => "identity_habits#create", as: "link"
     delete "/unlink" => "identity_habits#destroy", as: "unlink"
 
@@ -15,11 +15,14 @@ Rails.application.routes.draw do
     resources :habits
     resources :users, except: [:new]
     
-
-    resources :users do
-        resources :identities
-        resources :habits
+    resources :identities do
+      resources :habits
     end
+
+    # resources :users do
+    #     # resources :identities
+    #     resources :habits
+    # end
 
     
 

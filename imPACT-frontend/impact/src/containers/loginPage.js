@@ -1,9 +1,30 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from "react-redux";
-// import { connect } from 'react-redux'
+import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 import LoginForm from '../components/login/loginForm'
-// import { getToken } from '../actions/authSetup'
 import { login } from '../actions/user'
+// import { connect } from 'react-redux'
+// import { getToken } from '../actions/authSetup'
+
+export default function LoginPage(){
+
+    const dispatch = useDispatch()
+
+    const submitHandler = async (email, password) => {
+        dispatch(login(email, password))
+    }
+  
+    if(localStorage.getItem("token") !== null) {
+        return <Redirect to="/dashboard" />
+    }
+
+    return(
+        <div className="page">
+            <LoginForm onSubmit={submitHandler}/>
+        </div>
+    )
+
+}
 
 // class loginPage extends Component {
 
@@ -47,22 +68,3 @@ import { login } from '../actions/user'
 // export default connect(mapStateToProps, mapDispatchToProps)(loginPage)
 
 
-
-export default function LoginPage(){
-
-    const dispatch = useDispatch()
-
-    const submitHandler = async (email, password) => {
-        dispatch(login(email, password))
-       
-        // history.push("/dashboard")
-    }
-  
-        return(
-            <div className="page">
-                <h1>LOG IN:</h1>
-                <LoginForm onSubmit={submitHandler}/>
-            </div>
-        )
- 
-}

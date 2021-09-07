@@ -1,41 +1,58 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { Redirect } from 'react-router'
 import SignupForm from '../components/signup/signupForm'
-import { getToken } from '../actions/authSetup'
 import { signup } from '../actions/user'
+// import { connect } from 'react-redux'
+// import { getToken } from '../actions/authSetup'
 
+export default function SignupPage(){
 
-class signupPage extends Component {
+    const dispatch = useDispatch()
 
-    componentDidMount(){
-        // this.props.get_token()
+    const submitHandler = async (email, name, username, password) => {
+        dispatch(signup(email, name, username, password))
+    }
+  
+    if(localStorage.getItem("token") !== null) {
+        return <Redirect to="/dashboard" />
     }
 
-    submitHandler = async (email, name, username, password) => {
-        await this.props.signup(email, name, username, password)
-        this.props.history.push("/dashboard")
-    }
-
-    render(){
-        
-        return(
-            <div className="page">
-            <h1>SIGN UP:</h1>
-            <SignupForm handleSubmit={this.submitHandler}/>
-            </div>
-        )
-    }
+    return(
+        <div className="page">
+            <SignupForm onSubmit={submitHandler}/>
+        </div>
+    )
 }
 
-const mapStateToProps = () => ({
+
+// class signupPage extends Component {
+
+//     submitHandler = async (email, name, username, password) => {
+//         await this.props.signup(email, name, username, password)
+//         if(localStorage.getItem("token") !== null) {
+//             return <Redirect to="/dashboard" />
+//         }
+//         // this.props.history.push("/dashboard")
+//     }
+
+//     render(){
+//         return(
+//             <div className="page">
+//             <SignupForm handleSubmit={this.submitHandler}/>
+//             </div>
+//         )
+//     }
+// }
+
+// const mapStateToProps = () => ({
     
-})
+// })
 
-const mapDispatchToProps = (dispatch) => ({
-    // get_token: () => dispatch(getToken()),
-    signup: (email, name, username, password) => dispatch(signup(email, name, username, password))
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     signup: (email, name, username, password) => dispatch(signup(email, name, username, password))
+// })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(signupPage)
+// export default connect(mapStateToProps, mapDispatchToProps)(signupPage)
 

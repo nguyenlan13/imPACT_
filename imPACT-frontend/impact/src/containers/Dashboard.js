@@ -14,36 +14,41 @@ export default function Dashboard(){
         const dispatch = useDispatch()
         const user = useSelector((state) => state.user.userInfo)
         const identities = useSelector((state) => state.identities.identities)
-console.log(user)
-        // const [sortedList, setSortedList] = useState([])
+        console.log(user)
 
         useEffect(() => {
             dispatch(getAllIdentities())
 
-            
         }, []) 
 
-        const list = <Menu> {identities.map((identity, i) => {
-                        return <Menu.Item key={i}>
+        // const list = <Menu> {identities.map((identity, i) => {
+        //                 return <Menu.Item key={i}>
+        //                     {identity.pact_name}
+        //                     </Menu.Item>
+        //                     })
+        //                 }
+        //             </Menu>
+        const list = identities.map((identity, i) => {
+                            return <li key={i}>
+                            <Link to={`identities/{identity.id}`}>
                             {identity.pact_name}
-                            </Menu.Item>
+                            </Link>
+                            </li>
                             })
-                        }
-                    </Menu>
-
+            
         return(
              <div className="page">
-                {/* <h1 className="welcome">Welcome, {user.name}!</h1> */}
                     <h1 className="header">Dashboard</h1>
                     <br/>
-                    <Card>
-                        <Dropdown overlay={list} trigger={['click']}>
+                    <Card title="Join a Pact">
+                        {list}
+                        {/* <Dropdown overlay={list} trigger={['click']}>
                             <Button>
                             {/* <a className="ant-dropdown-link" onClick={e => e.preventDefault()}> */}
-                            Join a Pact
+                            {/* Join a Pact
                             {/* </a> */}
-                            </Button>
-                        </Dropdown>
+                            {/* </Button> */}
+                        {/* </Dropdown> */}
 
                     {/* {sortedList.map(identity => {
                             return <IdentityList
@@ -62,14 +67,14 @@ console.log(user)
                     <Col span={12}>
                         <Card title="Most Recent Built Habits" >
                         
-                            <Link to="/identities">Add an IDentity</Link>
+                            {/* <Link to="/identities">Add an IDentity</Link> */}
                         </Card>
                     </Col>
                    
                
                     <Col span={12}>
                         <Card title="Most Recent Quit Habits" >
-                            <Link to="/habits">Create a new Habit</Link>
+                            {/* <Link to="/habits">Create a new Habit</Link> */}
                         </Card>
                     </Col>
                 </Row>

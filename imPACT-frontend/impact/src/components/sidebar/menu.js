@@ -16,15 +16,14 @@ export const SIDER_MENU_LIST = [
             path: USER.MY_PACTS.path,
             name: USER.MY_PACTS.name,
         },
-
-        {
-            path: USER.MY_HABITS.path,
-            name: USER.MY_HABITS.name,
-        },
-          {
-            path: USER.MY_ACTION_STEPS.path,
-            name: USER.MY_ACTION_STEPS.name,
-          },
+        // {
+        //     path: USER.MY_HABITS.path,
+        //     name: USER.MY_HABITS.name,
+        // },
+        //   {
+        //     path: USER.MY_ACTION_STEPS.path,
+        //     name: USER.MY_ACTION_STEPS.name,
+        //   },
           {
             path: USER.MY_PROGRESS.path,
             name: USER.MY_PROGRESS.name,

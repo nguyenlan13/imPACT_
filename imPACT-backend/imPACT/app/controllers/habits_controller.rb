@@ -1,18 +1,14 @@
 class HabitsController < ApplicationController
+    before_action :require_auth
 
     def index
-        current_user
-        if params[:user_id]
-            habits = User.find(params[:user_id]).habits
-            render json: habits
+        if params[:showall]
+            @habits = Habit.all
         elsif params[:identity_id]
-            habits = Identity.find(params[:identity_id]).habits
-            render json: habits
+            @habits = Identity.find(params[:identity_id]).habits
         else
-            habits = Habit.all
-            render json: habits
+            @habits = current_user.habits
         end
- 
     end
 
     def create

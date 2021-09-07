@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Alert, Spin, Row } from "antd";
-
-
+import { Card } from "antd";
+import { Link } from "react-router-dom"
 
 const LoginForm = ({onSubmit}) => {
   const [email, setEmail] = useState("");
@@ -16,89 +15,36 @@ const LoginForm = ({onSubmit}) => {
     onSubmit(email, password)
   };
   return (
-    // <Row type='flex' justify='center' align='middle'>
-    //   <Form 
-    //     onSubmit={handleSubmit}
-    //     style={{
-    //       width: "350px",
-    //       marginTop: "10px",
-    //     }}
-    //   >
-    //     <Form.Item
-    //       label="Email"
-    //     >
-    //       <Input
-    //         label="Email"
-    //         className="mr-sm-2"
-    //         type="email"
-    //         placeholder="Email"
-    //         onChange={event => setEmail(event.target.value)}
-    //         value={email}
-    //       />
-    //     </Form.Item>
-    //     <Form.Item
-    //       label="Password"
-    //     >
-    //       <Input
-    //         label='Password'
-    //         className="mr-sm-2"
-    //         type="password"
-    //         placeholder="Password"
-    //         onChange={event => setPassword(event.target.value)}
-    //         value={password}
-    //       />
-    //     </Form.Item>
-    
-    //     <Form.Item
-    //     style={{ textAlign: "center" }}
-    //     >
-    //       <Button htmlType="submit" style={{ width: "40%" }} > Submit</Button>
-    //     </Form.Item>
-    //   </Form> 
-    // </Row>
-
-      <form 
-        onSubmit={handleSubmit}
-        // style={{
-        //   width: "350px",
-        //   marginTop: "10px",
-        // }}
-      >
-        {/* <Form.Item
-          label="Email"
-        > */}
+    <Card className="loginCard" title="LOG IN">
+      <form onSubmit={handleSubmit}>
+        <div className="label"> Email: &nbsp;
           <input
             label="Email"
             className="mr-sm-2"
             type="email"
-            placeholder="Email"
+            // placeholder="Email"
             onChange={event => setEmail(event.target.value)}
             value={email}
           />
-          <br/>
-        {/* </Form.Item>
-        <Form.Item */}
-          {/* label="Password"
-        > */}
+        </div>
+        <div className="label"> Password: &nbsp;
           <input
             label='Password'
             className="mr-sm-2"
             type="password"
-            placeholder="Password"
+            // placeholder="Password"
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
-        {/* </Form.Item>
-    
-        <Form.Item
-        style={{ textAlign: "center" }}
-        > */}
+        </div>
         <br/>
-        <br/>
-          <input type="submit" /> 
-        {/* </Form.Item> */}
+          <div className="loginButton">
+            <input type="submit" /> 
+          </div>
       </form> 
-    // </Row>
+      <br/>
+      <Link to="/signup"> or Create and Account </Link>
+    </Card>
   );
 };
 

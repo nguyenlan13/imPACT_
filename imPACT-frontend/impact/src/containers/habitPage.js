@@ -26,13 +26,7 @@ class habitPage extends Component {
         })    
         return(
             <div className="page">
-            <h1>Add a New Habit:</h1>
-            <HabitForm handleSubmit={this.submitHandler}/>
-            <br/>
-            <br/>
-                {/* <div className="card"> */}
-                    <Card title="Current Habits:">
-                    {/* <h3>Current Habits:</h3> */}
+                <Card title="Current Habits:">
                     {sortedHabits.map(habit => {
                         return  <HabitList
                         build={habit.build}
@@ -43,8 +37,9 @@ class habitPage extends Component {
                         habitId={habit.id}
                         />
                     })}
-                    </Card>
-                {/* </div> */}
+                </Card>
+                <br/>
+                <HabitForm handleSubmit={this.submitHandler}/>
             </div> 
         )
     }

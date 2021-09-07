@@ -1,27 +1,25 @@
 class IdentitiesController < ApplicationController
+    before_action :require_auth
 
     def index
-        if params[:user_id]
-            identities = User.find(params[:user_id]).identities
-            render json: identities
+        if params[:showall]
+            @identities = Identity.all
         else
-            identities = Identity.all
-            render json: identities
+            @identities = current_user.identities
         end
     end
 
     def create
-        identity = Identity.new(identity_params)
-        if identity.save
-            render json: identity
+        @identity = Identity.new(identity_params)
+        if @identity.save
+            render :show
+        else
+            render json: {errors: @identity.errors.full_messages}, status: 400
         end
     end
 
     def show
-        current_user
-        identity = Identity.find(params[:id])
-        commentable = identity
-        render json: identity
+        @identity = Identity.find(params[:id])
     end
 
     private

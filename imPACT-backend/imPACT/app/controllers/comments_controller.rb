@@ -15,7 +15,4 @@ class CommentsController < ApplicationController
         end
             render json: comments
     end 
-
-
-
 end

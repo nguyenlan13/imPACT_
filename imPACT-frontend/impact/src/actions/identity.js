@@ -1,8 +1,11 @@
-import { GET_ALL_IDENTITIES,
+import { 
+    GET_ALL_IDENTITIES,
     GET_MY_IDENTITIES,
     GET_IDENTITY,
+    GET_IDENTITY_HABITS,
     ADD_IDENTITY,
-    JOIN_IDENTITY
+    JOIN_IDENTITY,
+    QUIT_IDENTITY
 } from '../actionTypes'
 import { getToken } from './authSetup'
 
@@ -10,7 +13,7 @@ export const getAllIdentities = () => {
     return async function (dispatch) {
         try{
             const token = getToken()
-            const res = await fetch("http://localhost:3001/identities", {
+            const res = await fetch("http://localhost:3001/identities?showall=1", {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -33,6 +36,7 @@ export const getAllIdentities = () => {
 }
 
 export const getIdentity = (identityId) => {
+    console.log(identityId)
     return async function (dispatch) {
         try{
             const token = getToken()
@@ -53,6 +57,36 @@ export const getIdentity = (identityId) => {
                 type: GET_IDENTITY,
                 payload: identityJson
             })
+            return identityJson
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+export const getIdentityHabits = (identityId) => {
+    console.log(identityId)
+    return async function (dispatch) {
+        try{
+            const token = getToken()
+            const res = await fetch(`http://localhost:3001/identities/${identityId}/habits`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+                // credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const identityJson = await res.json()
+            console.log(identityJson)
+            dispatch({
+                type: GET_IDENTITY_HABITS,
+                payload: identityJson
+            })
+            return identityJson
         }catch(error){
             console.log(error)
         }
@@ -89,11 +123,11 @@ export const addIdentity = (pact_name, description) => {
 }
 
 
-export const getMyIdentities = (userId) => {
+export const getMyIdentities = () => {
     return async function (dispatch) {
         try{
             const token = getToken()
-            const res = await fetch(`http://localhost:3001/users/${userId}/identities`, {
+            const res = await fetch(`http://localhost:3001/identities`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -128,21 +162,7 @@ export const joinIdentity = (identityId) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                //  This sends the payload that looks like this:
-                //  {
-                //    "user_identity": {
-                //       {
-                //          user: {}
-                //          user_identity: "1"
-                //       }
-                //     }
-                //  }
-                //  Version #1
-                //body: JSON.stringify({user_identity: {user: user, identity_id: identityId}}),
-
-                //  Version #2
                 body: JSON.stringify({ identity_id: identityId }),
-                // credentials: 'include'
             })
             if(!response.ok){
                 throw response
@@ -150,6 +170,35 @@ export const joinIdentity = (identityId) => {
             let identityJson = await response.json()
             dispatch({
                 type: JOIN_IDENTITY,
+                payload: 
+                    identityJson
+            })
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
+
+export const quitIdentity = (identityId) => {
+    console.log(identityId)
+    return async function (dispatch) {
+        try{
+            const token = getToken()
+            let response = await fetch("http://localhost:3001/leave",{
+                method: "DELETE",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ identity_id: identityId }),
+            })
+            if(!response.ok){
+                throw response
+            }
+            let identityJson = await response.json()
+            dispatch({
+                type: QUIT_IDENTITY,
                 payload: 
                     identityJson
             })

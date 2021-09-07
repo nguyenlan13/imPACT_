@@ -85,6 +85,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
+    jb (0.8.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jwt (2.2.3)
@@ -213,6 +214,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   dotenv-rails
+  jb
   jbuilder (~> 2.7)
   jwt
   listen (>= 3.0.5, < 3.2)

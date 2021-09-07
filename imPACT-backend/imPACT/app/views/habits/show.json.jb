@@ -1,0 +1,14 @@
+
+json = {
+    id: @habit.id,
+    build: @habit.build,
+    title: @habit.title,
+    frequency_number: @habit.frequency_number,
+    frequency: @habit.frequency,
+    users: render(@habit.users),
+    steps: render(@habit.steps),
+    comments: render(@habit.comments),
+    identities: render(@habit.identities)
+}
+
+json

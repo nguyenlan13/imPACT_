@@ -1,48 +1,45 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col } from 'antd';
 import { getMyHabits } from "../../actions/habit"
 
 export default function MyHabits(){
 
-    const userId = useSelector((state) => state.user.userInfo.id)
+    // const userId = useSelector((state) => state.user.userInfo.id)
     const dispatch = useDispatch()
    
     useEffect(() => {
-        dispatch(getMyHabits(userId));
-
+        dispatch(getMyHabits());
         // setError("");
     }, []);
 
     const myHabits = useSelector((state) => state.habits.MyHabits)
-    console.log(userId, myHabits)
+    console.log(myHabits)
 
     return(
         <div className="page">
             <h1 className="header">My Habits</h1>
+        {/* </div>
+        <div> */}
+            {/* <Row>
+            {myHabits.map((habit) => (
+                <Col span={8}  key={habit.id}>
+                    <Link to={`/habits/${habit.id}`}>
+                    <Card
+                    hoverable
+                    bordered={true}
+                    style={{ width: 200 }}
+                    >
+                        <hr/>
+                        <h5>{habit.title}</h5>
+                    </Card>
+                        <br/>
+                    </Link>
+                </Col>
+            )
+            )}
+            </Row> */}
         </div>
-        // <div>
-        //     <h1>My Habits</h1>
-        //     {myHabits.map((habit) => (
-        //         <Col span={8}>
-        //             {/* <Link to={`/member/business/${membership.business.id}/classes`}> */}
-        //             <Card
-        //             key={habit.id}
-        //             hoverable
-        //             bordered={true}
-        //             style={{ width: 200 }}
-        //             // cover={<img alt="" src={membership.business.logo_path}/>}
-        //             >
-        //                 <hr/>
-        //                 <h5>{habit.title}</h5>
-        //                 {/* <p>Membership Level: {membership.level}</p> */}
-        //             </Card>
-        //                 <br/>
-        //                 <br/>
-        //             {/* </Link> */}
-        //         </Col>
-        //     )
-        //     )}
-        // </div>
     )
 }

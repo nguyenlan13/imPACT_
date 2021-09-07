@@ -10,7 +10,7 @@ export const getAllHabits = () => {
     return async function (dispatch) {
         try{
             const token = getToken()
-            const res = await fetch("http://localhost:3001/habits", {
+            const res = await fetch("http://localhost:3001/habits?showall=1", {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -59,11 +59,11 @@ export const getHabit = (habitId) => {
     }
 }
 
-export const getMyHabits = (userId) => {
+export const getMyHabits = () => {
     return async function (dispatch) {
         try{
             const token = getToken()
-            const res = await fetch(`http://localhost:3001/users/${userId}/habits`, {
+            const res = await fetch(`http://localhost:3001/habits`, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

@@ -1,0 +1,11 @@
+
+json = {
+    id: @identity.id,
+    pact_name: @identity.pact_name,
+    description: @identity.description,
+    users: render(@identity.users),
+    habits: render(@identity.habits),
+    comments: render(@identity.comments)
+}
+
+json

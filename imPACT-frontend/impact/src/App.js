@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -14,6 +13,7 @@ import Identity from './containers/identityPage'
 import Habit from './containers/habitPage'
 import Login from './containers/loginPage'
 import Signup from './containers/signupPage'
+import Logout from './containers/logout'
 import IdentityItem from './components/identities/identityItem'
 import HabitItem from './components/habits/habitItem'
 
@@ -23,16 +23,14 @@ import { Content } from "antd/lib/layout/layout";
 import Sidebar from './components/sidebar/sidebar';
 import MyHabits from './containers/SidebarPages/myHabits'
 import MyIdentities from './containers/SidebarPages/myIdentities'
+import IdentityHabits from './containers/SidebarPages/myIdentityHabits'
 import MyActionSteps from './containers/SidebarPages/myActionSteps'
 import MyProgress from './containers/SidebarPages/myProgress'
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch()
-  // const [userInfo, setUserInfo] = useState(undefined)
-  // const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
- 
   console.log(user)
 
   const handleToggleCollapsed = () => {
@@ -41,59 +39,58 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getUser())
-
   }, [dispatch]) 
 
   const userInfo = useSelector((state) => state.user.userInfo)
   console.log(userInfo)
 
   return (
-    
-    <Layout style={{ minHeight: "100vh" }}>
-    <Router>
-      {user && user.isAuthenticated && (<Sidebar {...{ collapsed }} />)}
-      {/* <Layout> */}
-        {/* <Header {...{ collapsed, setCollapsed: handleToggleCollapsed }} /> */}
-        <Layout
-          style={{
-            padding: "0 24px 24px",
-          }}
-        >
-          <Navbar/>
-          <Content
+    <div className="App">
+      <Layout style={{ minHeight: "100vh" }}>
+      <Router>
+        {user && user.isAuthenticated && (<Sidebar {...{ collapsed }} />)}
+        {/* <Layout> */}
+          {/* <Header {...{ collapsed, setCollapsed: handleToggleCollapsed }} /> */}
+          <Layout
             style={{
-              backgroundColor: "#fff",
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-              height: "100%",
+              padding: "0 24px 24px",
             }}
           >
-        {/* <div className="App"> */}
-            {/* <Navbar/> */}
-            <Switch>
-                <Route path="/identities/:identityId"  render={({match}) => (<IdentityItem match={match} />)} />
-                <Route path="/habits/:habitId"  render={({match}) => (<HabitItem match={match} />)} />
-                {/* <Route path="/profile/:userId"  render={({match}) => (<HabitItem match={match} />)} /> */}
-                <Route exact path="/my_habits" component={MyHabits}/>
-                <Route exact path="/my_identities" component={MyIdentities}/>
-                <Route exact path="/my_action_steps" component={MyActionSteps}/>
-                <Route exact path="/my_progress" component={MyProgress}/>
-                <Route exact path="/identities" component={Identity}/>
-                <Route exact path="/habits" component={Habit}/>
-                <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/signup" component={Signup}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/dashboard" component={Dashboard}/>
-                <Route exact path="/" component={Welcome}/>
-            </Switch>
-        {/* </div> */}
-            </Content>
-          </Layout>
-        {/* </Layout> */}
-      </Router>
-    </Layout>
+            <Navbar/>
+            <Content
+              style={{
+                backgroundColor: "#fff",
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+                height: "100%",
+              }}
+            >
+              <Switch>
+                  <Route path="/identities/:identityId"  render={({match}) => (<IdentityItem match={match} />)} />
+                  <Route path="/identities/:identityId/habits"  render={({match}) => (<IdentityHabits match={match} />)} />
+                  <Route path="/habits/:habitId"  render={({match}) => (<HabitItem match={match} />)} />
+                  {/* <Route path="/profile/:userId"  render={({match}) => (<HabitItem match={match} />)} /> */}
+                  <Route exact path="/my_habits" component={MyHabits}/>
+                  <Route exact path="/my_identities" component={MyIdentities}/>
+                  <Route exact path="/my_action_steps" component={MyActionSteps}/>
+                  <Route exact path="/my_progress" component={MyProgress}/>
+                  <Route exact path="/identities" component={Identity}/>
+                  <Route exact path="/habits" component={Habit}/>
+                  <Route exact path="/profile" component={Profile}/>
+                  <Route exact path="/login" component={Login}/>
+                  <Route exact path="/signup" component={Signup}/>
+                  <Route exact path="/logout" component={Logout}/>
+                  <Route exact path="/about" component={About}/>
+                  <Route exact path="/dashboard" component={Dashboard}/>
+                  <Route exact path="/" component={Welcome}/>
+              </Switch>
+              </Content>
+            </Layout>
+          {/* </Layout> */}
+        </Router>
+      </Layout>
+    </div>
   );
 }
 

@@ -27,32 +27,28 @@ class identityPage extends Component {
         })
         return(
             <div className="page">
-                <h1>Add an Identity:</h1>
-                <IdentityForm handleSubmit={this.submitHandler}/>
-                <br/>
-                <br/>
-                {/* <div className="card"> */}
                 <Card title="Current Pacts:" >
-                    {/* <h3>Current Pacts</h3> */}
                     {sortedIdentities.map(identity => {
                         return <IdentityList
                         pact_name={identity.pact_name}
                         description={identity.description}
+                        users={identity.users}
                         key={identity.id}
                         identityId={identity.id}
                         />
                     })}
                 </Card>
-                {/* </div> */}
+                <br/>
+                <IdentityForm handleSubmit={this.submitHandler}/>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-   const { token, identities, user } = state
+   const {identities, user } = state
    return {
-       token: token,
+    //    token: token,
        identities: identities.identities,
        user: user
    }
@@ -61,7 +57,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     get_all_identities: () => dispatch(getAllIdentities()),
     add_identity: (pact_name, description) => dispatch(addIdentity(pact_name, description)),
-    join_identity: (userId, identityId) => dispatch(joinIdentity(userId, identityId))
+    // join_identity: (userId, identityId) => dispatch(joinIdentity(userId, identityId))
 })
 
 // export default identityPage

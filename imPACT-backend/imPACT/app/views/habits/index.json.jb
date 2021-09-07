@@ -1,0 +1,4 @@
+@habits.map do |habit|
+    {id: habit.id, build: habit.build, title: habit.title, frequency_number: habit.frequency_number, frequency: habit.frequency, users: habit.users, identities: habit.identities}
+end
+

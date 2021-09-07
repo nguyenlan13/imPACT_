@@ -1,28 +1,25 @@
 import React, { Component }  from 'react'
 
-
-
 class About extends Component {
 
     render(){
         return(
             <div className="page">
                 <h1 className="header">About</h1>
-
                 <div>
-                    <p>
+                    <p className="about">
                     Welcome to imPACT!
 
                     Building good habits that last is not an easy feat. The key to successfully building a lasting habit is to associate the habit to a new identity. 
                     Identity-based habits have a greater likelihood of lasting long term because they are more closely tied to how an individual is defined. 
                     An identity-based habit focuses on what kind of person you want to become and operates on the level of belief change.
                     </p>
-                    <p>
+                    <p className="about">
                     The name “imPACT” has multiple meanings. Good habits can have a major impact on long term success. 
                     The prefix “im” represents self and who we wish to become, such as “I am a great programmer”. 
                     Pact represents an agreement with oneself or with others (accountability buddies) to stick to these habits that will lead us to the identity (goal) that we desire.
                     </p>
-                    <p>
+                    <p className="about">
                     This application uses “identity” as the connection between users and habits. 
                     A user has many habits through a, identity. 
                     It allows a user to create an identity and a habit and associate the two. Users who have a similar goal can join in on an identity and form pact. 
@@ -35,9 +32,6 @@ class About extends Component {
             </div>
         )
     }
-
-
 }
-
 
 export default About
